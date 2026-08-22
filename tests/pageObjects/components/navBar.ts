@@ -1,24 +1,35 @@
 import { BasePageComponent } from '../base.pageComponent';
 
 export default class NavBar extends BasePageComponent {
-  readonly links = {
-    home: this.page.locator("(//span[text()='Home'])[1]"),
-    upcoming_event: this.page.locator("(//span[text()='Upcoming Events'])[1]"),
-    on_demand: this.page.locator("(//span[text()='On-Demand'])[1]"),
-    aurora_live_members: this.page.locator("(//span[text()='Aurora Live Members'])[1]"),
-    contact_us: this.page.locator("(//span[text()='Contact us'])[1]"),
+  readonly menu = {
+    home: this.page.locator("//div[@id='0-Trang_chủ']"),
+    administrative_boundary: {
+      menu: this.page.locator("//div[@id='8-Địa_giới_hành_chính']"),
+      administrative_boundary_list: this.page.locator("//span[text()='Danh sách địa giới hành chính']"),
+      administrative_boundary_data_entry: this.page.locator("//span[text()='Nhập liệu hồ sơ địa giới hành chính']"),
+    },
+
+    local_government: {
+      menu: this.page.locator("//div[@id='9-Chính_quyền_địa_phương']"),
+      local_government_list: this.page.locator("//span[text()='Danh sách chính quyền địa phương']"),
+      local_government_data_entry: this.page.locator("//span[text()='Nhập liệu hồ sơ chính quyền địa phương']"),
+    },
+
+    reports: this.page.locator("//div[@id='10-Báo_cáo']"),
+
+    configuration: {
+      menu: this.page.locator("//div[@id='21-Cấu_hình']"),
+    }
   };
 
-  readonly userAvatar = this.page.locator("(//div[contains(@class, 'MuiAvatar-root')])[1]");
+  readonly userAvatar = this.page.locator("//div[contains(@class,'d-flex flex-column')]/following-sibling::div[1]");
+  readonly notifications = this.page.locator("//div[contains(@class,'p-toast p-component')]/following-sibling::button[1]");
 
   readonly userAvatar_dropdown = {
-    profile: this.page.locator("(//li[text()='Profile'])[2]"),
-    password: this.page.locator("(//li[text()='Password'])[2]"),
-    your_favs: this.page.locator("(//li[text()='Your favourites'])[2]"),
-    send_feedback: this.page.locator("(//li[text()='Send feedback'])[2]"),
-    exclusive_invitations: this.page.locator("(//li[text()='Exclusive Invitations'])[2]"),
-    logout: this.page.locator("(//li[text()='Logout'])[2]"),
+    instructions: this.page.locator("(//li[@role='menuitem']//div)[1]"),
+    information: this.page.locator("(//li[@role='menuitem']//div)[2]"),
+    change_password: this.page.locator("(//li[@role='menuitem']//div)[3]"),
+    logout: this.page.locator("(//li[@role='menuitem']//div)[4]"),
   };
 
-  readonly searchInput = this.page.locator('Search for products...');
 }

@@ -14,7 +14,7 @@ export abstract class BasePage {
   public filter: Filter;
   public search: Search;
   public changePassword: ChangePassword;
-  public baseUrl = process.env.BASE_URL || 'https://alpha.auroralive.com';
+  public baseUrl = process.env.BASE_URL || 'https://bonoivu-test.elcomlab.com';
 
   constructor(readonly page: Page) {
     this.navBar = new NavBar(this.page);
